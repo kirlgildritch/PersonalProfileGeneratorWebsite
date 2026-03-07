@@ -166,7 +166,7 @@
     </div>
 </div>
 
-<!-- Optional: Simple image preview script -->
+
 <script>
     document.getElementById('profileImage').addEventListener('change', function(e) {
         const preview = document.getElementById('preview');

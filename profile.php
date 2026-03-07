@@ -1,23 +1,23 @@
 <?php
-// Only allow POST
+
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     die("Invalid request method. Please use the form.");
 }
 
-// ─── Collect & sanitize form data ───────────────────────────────────────
+
 $fullname = trim($_POST['fullname'] ?? 'Not provided');
 $age      = trim($_POST['age'] ?? 'Not provided');
 $course   = trim($_POST['course'] ?? 'Not provided');
 $email    = trim($_POST['email'] ?? 'Not provided');
 $bio      = trim($_POST['bio'] ?? '');
-$gender   = trim($_POST['gender'] ?? 'Not selected');   // ← fixed name
+$gender   = trim($_POST['gender'] ?? 'Not selected');  
 
-// Hobbies (now using array from form)
+
 $hobbies = $_POST['hobbies'] ?? [];
 $hobbies = is_array($hobbies) ? array_map('trim', $hobbies) : [];
 $hobbies_text = !empty($hobbies) ? implode(', ', $hobbies) : 'None selected';
 
-// ─── Image upload handling ──────────────────────────────────────────────
+
 $uploadDir    = 'uploads/';
 $profileImage = '';
 $defaultAvatar = 'https://via.placeholder.com/160?text=' . urlencode(substr($fullname, 0, 1) ?: '?');
